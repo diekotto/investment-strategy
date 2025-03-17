@@ -10,7 +10,8 @@ import {
   Tooltip, 
   Legend, 
   Area, 
-  AreaChart 
+  AreaChart,
+  Cell
 } from 'recharts';
 
 // Container components
@@ -29,3 +30,4 @@ export const ChartXAxis = XAxis;
 export const ChartYAxis = YAxis;
 export const ChartTooltip = Tooltip;
 export const ChartLegend = Legend;
+export const ChartCell = Cell;

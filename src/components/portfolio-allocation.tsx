@@ -4,7 +4,8 @@ import {
   ChartPie, 
   ChartPieContainer,
   ChartLegend, 
-  ChartTooltip 
+  ChartTooltip,
+  ChartCell
 } from '@/components/ui/chart';
 import { Card } from '@/components/ui/card';
 import type { CategoryData } from '@/lib/types';
@@ -14,6 +15,19 @@ interface PortfolioAllocationProps {
 }
 
 export default function PortfolioAllocation({ data }: PortfolioAllocationProps) {
+  // Define direct colors for the chart
+  const COLORS = [
+    '#3b82f6', // blue-500
+    '#10b981', // emerald-500
+    '#f59e0b', // amber-500
+    '#6366f1', // indigo-500
+    '#ec4899', // pink-500
+    '#8b5cf6', // violet-500
+    '#ef4444', // red-500
+    '#14b8a6', // teal-500
+    '#f97316'  // orange-500
+  ];
+
   return (
     <div className="w-full h-[350px]">
       <Chart className="h-full">
@@ -26,7 +40,14 @@ export default function PortfolioAllocation({ data }: PortfolioAllocationProps) 
             outerRadius={90}
             paddingAngle={2}
             cornerRadius={4}
-          />
+          >
+            {data.map((entry, index) => (
+              <ChartCell 
+                key={`cell-${index}`} 
+                fill={COLORS[index % COLORS.length]} 
+              />
+            ))}
+          </ChartPie>
           <ChartTooltip
             content={({ payload }) => {
               if (!payload?.length) return null;
