@@ -1,4 +1,11 @@
-import { Chart, ChartLegend, ChartPie, ChartTooltip } from '@/components/ui/chart';
+// src/components/portfolio-allocation.tsx
+import { 
+  Chart, 
+  ChartPie, 
+  ChartPieContainer,
+  ChartLegend, 
+  ChartTooltip 
+} from '@/components/ui/chart';
 import { Card } from '@/components/ui/card';
 import type { CategoryData } from '@/lib/types';
 
@@ -10,15 +17,16 @@ export default function PortfolioAllocation({ data }: PortfolioAllocationProps) 
   return (
     <div className="w-full h-[350px]">
       <Chart className="h-full">
-        <ChartPie
-          data={data}
-          dataKey="value"
-          nameKey="name"
-          innerRadius={70}
-          outerRadius={90}
-          paddingAngle={2}
-          cornerRadius={4}
-        >
+        <ChartPieContainer>
+          <ChartPie
+            data={data}
+            dataKey="value"
+            nameKey="name"
+            innerRadius={70}
+            outerRadius={90}
+            paddingAngle={2}
+            cornerRadius={4}
+          />
           <ChartTooltip
             content={({ payload }) => {
               if (!payload?.length) return null;
@@ -32,16 +40,16 @@ export default function PortfolioAllocation({ data }: PortfolioAllocationProps) 
               );
             }}
           />
-        </ChartPie>
-        <ChartLegend
-          layout="vertical"
-          verticalAlign="middle"
-          align="right"
-          formatter={(value) => {
-            const item = data.find((d) => d.name === value);
-            return `${value} (${item?.percentage}%)`;
-          }}
-        />
+          <ChartLegend
+            layout="vertical"
+            verticalAlign="middle"
+            align="right"
+            formatter={(value) => {
+              const item = data.find((d) => d.name === value);
+              return `${value} (${item?.percentage}%)`;
+            }}
+          />
+        </ChartPieContainer>
       </Chart>
     </div>
   );

@@ -4,6 +4,7 @@ import PortfolioAllocation from '@/components/portfolio-allocation';
 import StockTable from '@/components/stock-table';
 import StockCharts from '@/components/stock-charts';
 import { mockPortfolioData } from '@/lib/mock-data';
+import './index.css';
 
 export default function Home() {
   return (
