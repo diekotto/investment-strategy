@@ -1,17 +1,17 @@
 // src/components/ui/chart.tsx
-import { 
-  ResponsiveContainer, 
-  PieChart, 
-  Pie, 
-  LineChart, 
-  Line, 
-  XAxis, 
-  YAxis, 
-  Tooltip, 
-  Legend, 
-  Area, 
+import {
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  Area,
   AreaChart,
-  Cell
+  Cell,
 } from 'recharts';
 
 // Container components

@@ -1,12 +1,5 @@
 // src/components/portfolio-allocation.tsx
-import { 
-  Chart, 
-  ChartPie, 
-  ChartPieContainer,
-  ChartLegend, 
-  ChartTooltip,
-  ChartCell
-} from '@/components/ui/chart';
+import { Chart, ChartPie, ChartPieContainer, ChartLegend, ChartTooltip, ChartCell } from '@/components/ui/chart';
 import { Card } from '@/components/ui/card';
 import type { CategoryData } from '@/lib/types';
 
@@ -17,17 +10,27 @@ interface PortfolioAllocationProps {
 // Create a custom legend renderer component
 const CustomLegend = (props: any) => {
   const { payload } = props;
-  
+
   return (
     <ul className="recharts-default-legend" style={{ padding: 0, margin: 0, textAlign: 'left' }}>
       {payload.map((entry: any, index: number) => (
-        <li key={`item-${index}`} className="recharts-legend-item" style={{ marginRight: 10, display: 'flex', alignItems: 'center'}}>
-          <svg className="recharts-surface" width="14" height="14" viewBox="0 0 32 32" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: 4 }}>
-            <path 
-              fill={entry.color} 
-              cx="16" 
-              cy="16" 
-              className="recharts-symbols" 
+        <li
+          key={`item-${index}`}
+          className="recharts-legend-item"
+          style={{ marginRight: 10, display: 'flex', alignItems: 'center' }}
+        >
+          <svg
+            className="recharts-surface"
+            width="14"
+            height="14"
+            viewBox="0 0 32 32"
+            style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: 4 }}
+          >
+            <path
+              fill={entry.color}
+              cx="16"
+              cy="16"
+              className="recharts-symbols"
               d="M16,0A16,16,0,1,1,0,16,16,16,0,0,1,16,0Z"
             />
           </svg>
@@ -67,10 +70,7 @@ export default function PortfolioAllocation({ data }: PortfolioAllocationProps) 
             isAnimationActive={true}
           >
             {data.map((_, index) => (
-              <ChartCell 
-                key={`cell-${index}`} 
-                fill={COLORS[index % COLORS.length]} 
-              />
+              <ChartCell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
             ))}
           </ChartPie>
           <ChartTooltip
@@ -86,12 +86,7 @@ export default function PortfolioAllocation({ data }: PortfolioAllocationProps) 
               );
             }}
           />
-          <ChartLegend 
-            content={<CustomLegend />}
-            layout="vertical"
-            verticalAlign="middle"
-            align="right"
-          />
+          <ChartLegend content={<CustomLegend />} layout="vertical" verticalAlign="middle" align="right" />
         </ChartPieContainer>
       </Chart>
     </div>

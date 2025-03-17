@@ -1,15 +1,15 @@
 // src/components/stock-charts.tsx
 import { useState } from 'react';
-import { 
-  Chart, 
-  ChartArea, 
-  ChartLine, 
-  ChartXAxis, 
-  ChartYAxis, 
-  ChartTooltip, 
+import {
+  Chart,
+  ChartArea,
+  ChartLine,
+  ChartXAxis,
+  ChartYAxis,
+  ChartTooltip,
   ChartLegend,
   ChartLineContainer,
-  ChartAreaContainer
+  ChartAreaContainer,
 } from '@/components/ui/chart';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import type { StockData } from '@/lib/types';
@@ -71,11 +71,7 @@ export default function StockCharts({ stocks }: StockChartsProps) {
               }}
             />
             <ChartAreaContainer>
-              <ChartArea
-                dataKey="price"
-                fill="hsl(var(--chart-1) / 0.2)"
-                stroke="transparent"
-              />
+              <ChartArea dataKey="price" fill="hsl(var(--chart-1) / 0.2)" stroke="transparent" />
             </ChartAreaContainer>
             <ChartLegend />
           </ChartLineContainer>
