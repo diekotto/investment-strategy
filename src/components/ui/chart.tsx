@@ -1,4 +1,3 @@
-// src/components/ui/chart.tsx
 import {
   ResponsiveContainer,
   PieChart,

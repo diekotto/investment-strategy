@@ -1,7 +1,9 @@
-// src/components/portfolio-allocation.tsx
+"use client"
+
 import { Chart, ChartPie, ChartPieContainer, ChartLegend, ChartTooltip, ChartCell } from '@/components/ui/chart';
 import { Card } from '@/components/ui/card';
 import type { CategoryData } from '@/lib/types';
+import { useMemo } from "react"
 
 interface PortfolioAllocationProps {
   data: CategoryData[];
@@ -44,6 +46,9 @@ const CustomLegend = (props: any) => {
 };
 
 export default function PortfolioAllocation({ data }: PortfolioAllocationProps) {
+  // Memoize the data to prevent unnecessary re-renders
+  const chartData = useMemo(() => data, [data]);
+
   // Define direct colors for the chart
   const COLORS = [
     '#3b82f6', // blue-500
@@ -60,7 +65,7 @@ export default function PortfolioAllocation({ data }: PortfolioAllocationProps) 
       <Chart className="h-full">
         <ChartPieContainer>
           <ChartPie
-            data={data}
+            data={chartData}
             dataKey="value"
             nameKey="name"
             innerRadius={70}

@@ -238,3 +238,28 @@ export function generateHistoricalData(stock: StockData, isComparison = false): 
 
   return data;
 }
+
+// Recalculate portfolio based on new investment amount
+export function recalculatePortfolio(newTotalValue: number): typeof mockPortfolioData {
+  const scaleFactor = newTotalValue / mockPortfolioData.totalValue;
+
+  // Create deep copy of the original data
+  const updatedPortfolio = JSON.parse(JSON.stringify(mockPortfolioData));
+
+  // Update total value
+  updatedPortfolio.totalValue = newTotalValue;
+
+  // Update category values
+  updatedPortfolio.categories = updatedPortfolio.categories.map((category: any) => ({
+    ...category,
+    value: Math.round(category.value * scaleFactor),
+  }));
+
+  // Update stock values
+  updatedPortfolio.stocks = updatedPortfolio.stocks.map((stock: any) => ({
+    ...stock,
+    value: Math.round(stock.value * scaleFactor),
+  }));
+
+  return updatedPortfolio;
+}

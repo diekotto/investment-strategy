@@ -1,4 +1,3 @@
-// src/components/stock-charts.tsx
 import { useState } from 'react';
 import {
   Chart,

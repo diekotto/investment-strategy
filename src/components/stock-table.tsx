@@ -1,13 +1,18 @@
+'use client';
+
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import type { StockData } from '@/lib/types';
 import { ArrowDownIcon, ArrowUpIcon } from 'lucide-react';
+import { useMemo } from 'react';
 
 interface StockTableProps {
   stocks: StockData[];
 }
 
 export default function StockTable({ stocks }: StockTableProps) {
+  // Memoize the stocks to prevent unnecessary re-renders
+  const stockData = useMemo(() => stocks, [stocks]);
   return (
     <div className="overflow-x-auto">
       <Table>
@@ -23,7 +28,7 @@ export default function StockTable({ stocks }: StockTableProps) {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {stocks.map((stock) => (
+          {stockData.map((stock) => (
             <TableRow key={stock.ticker}>
               <TableCell className="font-medium">{stock.name}</TableCell>
               <TableCell>{stock.ticker}</TableCell>
